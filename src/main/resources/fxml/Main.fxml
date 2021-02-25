@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e7e6f0, #cecfe1, #b3b8d2, #97a2c4, #8697c5, #758cc6, #6181c7, #597cd6, #5576e4, #576ff0, #5f66fb);;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <ImageView fitHeight="457.0" fitWidth="700.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@../main_car.png" />
+         </image>
+      </ImageView>
+      <MenuBar style="-fx-background-color: transparent;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fájl">
+            <items>
+              <MenuItem fx:id="ExitButton" mnemonicParsing="false" onAction="#ExitHandle" text="Kilépés" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Jármű">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#AddingCartoDBHandle" text="Új jármű hozzáadása..." />
+                  <MenuItem mnemonicParsing="false" text="Keresés" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Segítség">
+            <items>
+              <MenuItem fx:id="MyCardButton" mnemonicParsing="false" onAction="#MyCardButtonHandle" text="Névjegy" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
