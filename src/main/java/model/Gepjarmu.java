@@ -14,24 +14,21 @@ public class Gepjarmu {
     private SimpleStringProperty Hiba;
     private SimpleBooleanProperty Kesz;
 
-    public Gepjarmu(String nev, String kontakt, String gyarto, String tipus, String rendszam, String hiba, String kesz) {
+    public Gepjarmu(String nev, String kontakt, String gyarto, String tipus, String rendszam, String hiba) {
         Nev = new SimpleStringProperty(nev);
         Kontakt = new SimpleStringProperty(kontakt);
         Gyarto = new SimpleStringProperty(gyarto);
         Tipus = new SimpleStringProperty(tipus);
         Rendszam = new SimpleStringProperty(rendszam);
         Hiba = new SimpleStringProperty(hiba);
-        if(kesz.equals("true"))
-            this.Kesz = new SimpleBooleanProperty(true);
-        else
-            this.Kesz = new SimpleBooleanProperty(false);
+        this.Kesz = new SimpleBooleanProperty(false);
     }
 
     public String getNev() {
         return Nev.get();
     }
 
-    public String getTelefon() {
+    public String getKontakt() {
         return Kontakt.get();
     }
 

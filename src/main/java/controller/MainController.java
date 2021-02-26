@@ -52,4 +52,17 @@ public class MainController implements Initializable {
         cardshow.setScene(scene);
         cardshow.show();
     }
+    @FXML
+    public void SearchCarDBHandle(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/DBSearch.fxml"));
+        Stage searchtable = new Stage();
+        searchtable.initStyle(StageStyle.UNDECORATED);
+        searchtable.initModality(Modality.APPLICATION_MODAL);
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+
+        //searchtable.setTitle("Keresés az adatbázisban");
+        searchtable.setScene(scene);
+        searchtable.show();
+    }
 }

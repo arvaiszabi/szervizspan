@@ -24,7 +24,7 @@
           <Menu mnemonicParsing="false" text="Jármű">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#AddingCartoDBHandle" text="Új jármű hozzáadása..." />
-                  <MenuItem mnemonicParsing="false" text="Keresés" />
+                  <MenuItem mnemonicParsing="false" onAction="#SearchCarDBHandle" text="Keresés" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Segítség">
