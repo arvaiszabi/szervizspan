@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e8e7f8, #cfd0f2, #b3baec, #94a5e6, #829ae6, #6e8fe7, #5784e7, #547eed, #5477f3, #586ff8, #5f66fb);;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyCardController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
@@ -19,7 +18,7 @@
             <Image url="@../java_fx.png" />
          </image>
       </ImageView>
-      <Button fx:id="CardBackButton" layoutX="424.0" layoutY="360.0" mnemonicParsing="false" onAction="#CardBackButtonHandle" text="Vissza" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="CardBackButton" layoutX="424.0" layoutY="360.0" mnemonicParsing="false" onAction="#CardBackButtonHandle" style="-fx-background-color: #E58925;" text="OK" textFill="#fcf2f2" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <GridPane layoutX="25.0" layoutY="36.0" prefHeight="225.0" prefWidth="447.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,7 +29,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Fejlesztő: Árvai Szabolcs" textFill="WHITE" GridPane.halignment="CENTER">
+            <Label text="Készítette: Árvai Szabolcs" textFill="WHITE" GridPane.halignment="CENTER">
                <font>
                   <Font size="29.0" />
                </font>

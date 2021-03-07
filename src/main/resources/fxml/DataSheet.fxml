@@ -14,8 +14,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e7e6f0, #cecfe1, #b3b8d2, #97a2c4, #8697c5, #758cc6, #6181c7, #597cd6, #5576e4, #576ff0, #5f66fb);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DataSheetController">
    <children>
-      <Button fx:id="ModifyButton" layoutX="258.0" layoutY="353.0" mnemonicParsing="false" onAction="#ModifyButtonHandle" style="-fx-background-color: #E58925;" text="Módosítás" />
-      <Button fx:id="BackButton" layoutX="541.0" layoutY="353.0" mnemonicParsing="false" onAction="#BackButtonHandle" style="-fx-background-color: #E58925;" text="OK" />
+      <Button fx:id="ModifyButton" layoutX="258.0" layoutY="353.0" mnemonicParsing="false" onAction="#ModifyButtonHandle" style="-fx-background-color: #E58925;" text="Módosítás" textFill="#d7d7d7" />
+      <Button fx:id="BackButton" layoutX="541.0" layoutY="353.0" mnemonicParsing="false" onAction="#BackButtonHandle" style="-fx-background-color: #E58925;" text="OK" textFill="#b5a3a3" />
       <Label layoutX="230.0" layoutY="29.0" text="Adatlap" textFill="WHITE" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="229.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font size="30.0" />
@@ -24,7 +24,7 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Button fx:id="UnlockButton" layoutX="31.0" layoutY="353.0" mnemonicParsing="false" onAction="#UnlockButtonHandle" style="-fx-background-color: #E58925;" text="Feloldás" />
+      <Button fx:id="UnlockButton" layoutX="31.0" layoutY="353.0" mnemonicParsing="false" onAction="#UnlockButtonHandle" style="-fx-background-color: #E58925;" text="Feloldás" textFill="WHITE" />
       <GridPane layoutX="28.0" layoutY="108.0" prefHeight="214.0" prefWidth="546.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
