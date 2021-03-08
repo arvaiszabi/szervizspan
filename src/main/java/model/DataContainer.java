@@ -3,7 +3,7 @@ package model;
 public final class DataContainer {
     private Gepjarmu gepjarmu;
 
-    private final static DataContainer INSTANCE = new DataContainer();
+    private static final DataContainer INSTANCE = new DataContainer();
 
     private DataContainer() { }
 
@@ -11,11 +11,11 @@ public final class DataContainer {
         return gepjarmu;
     }
 
-    public void setGepjarmu(Gepjarmu gepjarmu) {
-        this.gepjarmu = gepjarmu;
-    }
-
     public static DataContainer getINSTANCE() {
         return INSTANCE;
+    }
+
+    public void setGepjarmu(Gepjarmu gepjarmu) {
+        this.gepjarmu = gepjarmu;
     }
 }

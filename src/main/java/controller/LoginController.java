@@ -31,8 +31,7 @@ public class LoginController implements Initializable {
             alert.setTitle("Információ!");
             alert.setHeaderText("Siker!");
             alert.setContentText("Sikeres bejelentkezés!");
-            alert.showAndWait();
-            Stage login = (Stage) LoginButton.getScene().getWindow();
+            alert.showAndWait();Stage login = (Stage) LoginButton.getScene().getWindow();
             login.close();
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
             Stage mainFrame = new Stage();
@@ -43,6 +42,7 @@ public class LoginController implements Initializable {
             mainFrame.setScene(scene);
             mainFrame.show();
         }
+
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba!");

@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +10,6 @@ import javafx.stage.Stage;
 import model.DBaseManager;
 import model.Gepjarmu;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -74,7 +72,7 @@ public class AddCarDBController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { }
 
-    private boolean PlateFormatCheck(String Rendszam)
+    protected static boolean PlateFormatCheck(String Rendszam)
     {
         if(Rendszam.length() != 7)
             return false;
