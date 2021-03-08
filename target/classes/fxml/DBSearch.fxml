@@ -45,7 +45,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Rendszám:" textFill="WHITE" GridPane.halignment="RIGHT">
+            <Label text="Keresendő:" textFill="WHITE" GridPane.halignment="RIGHT">
                <padding>
                   <Insets right="10.0" />
                </padding>
