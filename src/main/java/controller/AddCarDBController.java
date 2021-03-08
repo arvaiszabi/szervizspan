@@ -43,7 +43,7 @@ public class AddCarDBController implements Initializable {
             Alarm.setContentText("Kérem töltse ki a mezőket!");
             Alarm.show();
         }
-        if(SamePlates.isEmpty() && PlateFormatCheck(PlateField.getText()))
+        else if(SamePlates.isEmpty() && PlateFormatCheck(PlateField.getText()))
         {
             Gepjarmu jarmu = new Gepjarmu(
                     OwnerField.getText(),
@@ -53,6 +53,10 @@ public class AddCarDBController implements Initializable {
                     PlateField.getText(),
                     FaultField.getText());
             DBaseManager.DBaseCarAdd(jarmu);
+            Alarm.setAlertType(Alert.AlertType.INFORMATION);
+            Alarm.setHeaderText("Információ");
+            Alarm.setContentText("Adatok sikeresen rögzítve!");
+            Alarm.show();
             TextClear();
         }
         else

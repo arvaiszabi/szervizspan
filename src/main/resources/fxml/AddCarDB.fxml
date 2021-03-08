@@ -89,7 +89,7 @@
          <tooltip>
             <Tooltip text="Kattintson az adtok felvételéhez!" />
          </tooltip></Button>
-      <Button fx:id="BackButton" layoutX="417.0" layoutY="304.0" mnemonicParsing="false" onAction="#BackButtonHandle" style="-fx-background-color: #E58925;" text="Vissza" textFill="#eeecec" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
+      <Button fx:id="BackButton" layoutX="417.0" layoutY="304.0" mnemonicParsing="false" onAction="#BackButtonHandle" style="-fx-background-color: #E58925;" text="OK" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
          <tooltip>
             <Tooltip text="Vissza a főablakba" />
          </tooltip></Button>
