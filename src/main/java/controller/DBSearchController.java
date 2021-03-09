@@ -29,6 +29,7 @@ public class DBSearchController implements Initializable {
     @FXML private Button BackButton = new Button();
     @FXML private Button DataOpen = new Button();
     @FXML private Button DeleteButton = new Button();
+    @FXML private Button SearchButton = new Button();
     @FXML private TextField SearchField = new TextField();
     //Kereső lista beállítása
     @FXML private TableView<Gepjarmu> SearchTableView = new TableView<>();
@@ -45,6 +46,8 @@ public class DBSearchController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        SearchButton.disableProperty().bind(Bindings.isEmpty(SearchField.textProperty()));
+        SearchField.setPromptText("Mire keres?");
         //Kereső lista oszlopainak beállítása--> oszlopnév --> objektum melyik 'tulajdonsága' van megjelenítve
         OwnerCol.setCellValueFactory(new PropertyValueFactory<Gepjarmu, String>("Nev"));
         ContactCol.setCellValueFactory(new PropertyValueFactory<Gepjarmu, String>("Kontakt"));
@@ -53,7 +56,7 @@ public class DBSearchController implements Initializable {
         PlateCol.setCellValueFactory(new PropertyValueFactory<Gepjarmu, String>("Rendszam"));
         FaultCol.setCellValueFactory(new PropertyValueFactory<Gepjarmu, String>("Hiba"));
         StatCol.setCellValueFactory(new PropertyValueFactory<Gepjarmu, String>("Kesz"));
-        //SearchTableView.setItems(getGep());
+        SearchTableView.setPlaceholder(new Label("Nincs megjeleníthető eredmény!"));
         Alarm.setHeaderText("Információ");
         DataOpen.disableProperty().bind(Bindings.isEmpty(SearchTableView.getSelectionModel().getSelectedItems()));
         DeleteButton.disableProperty().bind(Bindings.isEmpty(SearchTableView.getSelectionModel().getSelectedItems()));
@@ -66,17 +69,16 @@ public class DBSearchController implements Initializable {
     @FXML
     public void SearchButtonHandle(ActionEvent actionEvent) {
         ArrayList<Gepjarmu> Result = DBaseManager.DBaseSearch(SearchField.getText());
-        SearchField.clear();
-        if(Result.isEmpty()) //Ha üres a visszaadott ArrayList --> nincs ilyen rendszám
+        //SearchField.clear();
+        if(Result.isEmpty()) //Ha üres a visszaadott ArrayList --> nincs az adatbázisban a keresendő kifejezés
         {
-            Alarm.setContentText("Nincs ilyen rendszámú gépjármű az adatbázisban!");
+            Alarm.setContentText("Nincs megjeleníthető eredmény!");
             Alarm.show();
         }
-        else
-            {
+
             ObservableList<Gepjarmu> Eredmeny = FXCollections.observableArrayList(Result);
             SearchTableView.setItems(Eredmeny);
-        }
+
     }
     @FXML
     public void DataOpenButtonHandle(ActionEvent actionEvent) throws IOException {
@@ -104,5 +106,6 @@ public class DBSearchController implements Initializable {
         DBaseManager.DBaseDelete(selected.getRendszam());
         Alarm.setContentText("Adatlap sikeresen törölve!");
         Alarm.show();
+        SearchButtonHandle(new ActionEvent());
     }
 }

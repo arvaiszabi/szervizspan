@@ -3,7 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,20 +14,26 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e7e6f0, #cecfe1, #b3b8d2, #97a2c4, #8697c5, #758cc6, #6181c7, #597cd6, #5576e4, #576ff0, #5f66fb);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DataSheetController">
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e7e6f0, #cecfe1, #b3b8d2, #97a2c4, #8697c5, #758cc6, #6181c7, #597cd6, #5576e4, #576ff0, #5f66fb);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DataSheetController">
    <children>
-      <Button fx:id="ModifyButton" layoutX="258.0" layoutY="353.0" mnemonicParsing="false" onAction="#ModifyButtonHandle" style="-fx-background-color: #E58925;" text="Módosítás" textFill="WHITE" />
-      <Button fx:id="BackButton" layoutX="541.0" layoutY="353.0" mnemonicParsing="false" onAction="#BackButtonHandle" style="-fx-background-color: #E58925;" text="OK" textFill="WHITE" />
-      <Label layoutX="230.0" layoutY="29.0" text="Adatlap" textFill="WHITE" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="229.0" AnchorPane.topAnchor="25.0">
+      <Button fx:id="ModifyButton" layoutX="258.0" layoutY="353.0" mnemonicParsing="false" onAction="#ModifyButtonHandle" style="-fx-background-color: #E58925;" text="Módosítás" textFill="WHITE" AnchorPane.bottomAnchor="22.0" />
+      <Button fx:id="BackButton" layoutX="541.0" layoutY="353.0" mnemonicParsing="false" onAction="#BackButtonHandle" style="-fx-background-color: #E58925;" text="OK" textFill="WHITE" AnchorPane.bottomAnchor="22.0" />
+      <Label layoutX="230.0" layoutY="29.0" text="Adatlap" textFill="WHITE" underline="true" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="229.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font size="30.0" />
-         </font></Label>
-      <Label fx:id="PlateLabel" layoutX="280.0" layoutY="73.0" textFill="WHITE" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="75.0">
+         </font>
+         <effect>
+            <Bloom />
+         </effect></Label>
+      <Label fx:id="PlateLabel" layoutX="280.0" layoutY="73.0" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="75.0">
          <font>
             <Font size="15.0" />
-         </font></Label>
-      <Button fx:id="UnlockButton" layoutX="31.0" layoutY="353.0" mnemonicParsing="false" onAction="#UnlockButtonHandle" style="-fx-background-color: #E58925;" text="Feloldás" textFill="WHITE" />
-      <GridPane layoutX="28.0" layoutY="108.0" prefHeight="214.0" prefWidth="546.0">
+         </font>
+         <effect>
+            <Bloom />
+         </effect></Label>
+      <Button fx:id="UnlockButton" layoutX="31.0" layoutY="353.0" mnemonicParsing="false" onAction="#UnlockButtonHandle" style="-fx-background-color: #E58925;" text="Feloldás" textFill="WHITE" AnchorPane.bottomAnchor="22.0" />
+      <GridPane layoutX="28.0" layoutY="108.0" prefHeight="264.0" prefWidth="545.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,38 +44,101 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Tulajdonos:" GridPane.halignment="RIGHT">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <Label text="Elérhetőség:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <Label text="Gyártó:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <padding>
                   <Insets right="10.0" />
                </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <Label text="Típus:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <padding>
                   <Insets right="10.0" />
                </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <Label text="Hiba:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <padding>
                   <Insets right="10.0" />
                </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <TextField fx:id="OwnerField" GridPane.columnIndex="1" />
             <TextField fx:id="ContactField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="ManuField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="TypeField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="FaultField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Státusz:" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <RadioButton fx:id="InProgressRadio" mnemonicParsing="false" text="Folyamatban.." GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="ReadyRadio" mnemonicParsing="false" text="Elkészült" GridPane.halignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
       <ImageView fitHeight="139.0" fitWidth="156.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">

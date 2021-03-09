@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,12 +22,12 @@ public class LoginController implements Initializable {
     @FXML private TextField UserNameField = new TextField();
     @FXML private TextField PasswordField = new TextField();
     @FXML private Button LoginButton = new Button();
-    
+
     @FXML
     private void AuthorizationHandle(ActionEvent event) throws IOException {
         Person LogForm = new Person(UserNameField.getText(), PasswordField.getText());
         TextClear();
-        if(LogForm.getUsername().equals("admin") && LogForm.getUsername().equals("admin"))
+        if(LogForm.getUsername().equals("admin") && LogForm.getPassword().equals("admin"))
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Információ!");
@@ -54,6 +56,9 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        UserNameField.setPromptText("Írja be felhasználónevét...");
+        PasswordField.setPromptText("Írja be jelszavát...");
+        LoginButton.disableProperty().bind(Bindings.isEmpty(UserNameField.textProperty()));
     }
     private void TextClear()
     {

@@ -49,7 +49,8 @@ public class AddCarDBController implements Initializable {
                     ManufacturerField.getText(),
                     TypeField.getText(),
                     PlateField.getText(),
-                    FaultField.getText());
+                    FaultField.getText(),
+                    false);
             DBaseManager.DBaseCarAdd(jarmu);
             Alarm.setAlertType(Alert.AlertType.INFORMATION);
             Alarm.setHeaderText("Információ");
@@ -70,7 +71,14 @@ public class AddCarDBController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) { }
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        OwnerField.setPromptText("A jármű tulajdonosának a neve");
+        ContactField.setPromptText("A tulajdonos elérhetősége (pl.:telefon, email)");
+        ManufacturerField.setPromptText("A jármű gyártója");
+        TypeField.setPromptText("A jármű típusa");
+        PlateField.setPromptText("A jármű rendszáma (pl.: ABC-123)");
+        FaultField.setPromptText("Hiba leírása...");
+    }
 
     protected static boolean PlateFormatCheck(String Rendszam)
     {

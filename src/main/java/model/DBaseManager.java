@@ -100,7 +100,7 @@ public class DBaseManager {
             {
                 AutoLista.add(new Gepjarmu(Talalat.getString("Tulajdonos"), Talalat.getString("Elérhetőség"),
                         Talalat.getString("Gyártó"), Talalat.getString("Típus"), Talalat.getString("Rendszám"),
-                        Talalat.getString("Hiba")));
+                        Talalat.getString("Hiba"), Talalat.getString("Státusz").equals("Elkészült!")?true:false));
             }
         } catch (SQLException e)
         {

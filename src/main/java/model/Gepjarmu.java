@@ -14,14 +14,14 @@ public class Gepjarmu {
     private SimpleStringProperty Hiba;
     private SimpleBooleanProperty Kesz;
 
-    public Gepjarmu(String nev, String kontakt, String gyarto, String tipus, String rendszam, String hiba) {
+    public Gepjarmu(String nev, String kontakt, String gyarto, String tipus, String rendszam, String hiba, Boolean kesz) {
         Nev = new SimpleStringProperty(nev);
         Kontakt = new SimpleStringProperty(kontakt);
         Gyarto = new SimpleStringProperty(gyarto);
         Tipus = new SimpleStringProperty(tipus);
         Rendszam = new SimpleStringProperty(rendszam);
         Hiba = new SimpleStringProperty(hiba);
-        this.Kesz = new SimpleBooleanProperty(false);
+        this.Kesz = new SimpleBooleanProperty(kesz);
     }
 
     public String getNev() {
@@ -54,6 +54,9 @@ public class Gepjarmu {
         else
             return "Folyamatban...";
     }
+    public void setKesz(boolean kesz) {
+        this.Kesz.set(kesz);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -74,7 +77,7 @@ public class Gepjarmu {
                 "Típus: " + Tipus + "\n" +
                 "Rendszám: " + Rendszam + "\n" +
                 "Tulaj. neve: " + Nev + "\n" +
-                "Tulaj. elérhetősége: " + Kontakt + "\n" +
+                "Tulaj. elérhetősége: " + Kontakt + "\n " +
                 this.getKesz() + "\n";
     }
 }

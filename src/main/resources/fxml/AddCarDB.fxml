@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,60 +30,78 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Tulajdonos:" textFill="#f8f3f3" GridPane.halignment="RIGHT">
+            <Label text="Tulajdonos:" textFill="WHITE" GridPane.halignment="RIGHT">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <effect>
+                  <Bloom />
+               </effect>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Label>
             <Label text="Elérhetőség:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <effect>
+                  <Bloom />
+               </effect>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Label>
             <Label text="Rendszám:" textFill="#fcfcfc" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <Label text="Gyártó:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <Label text="Típus:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <Label text="Hiba (röviden):" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
-            <TextField fx:id="OwnerField" GridPane.columnIndex="1">
-               <tooltip>
-                  <Tooltip text="A jármű tulajdonosának neve." />
-               </tooltip></TextField>
-            <TextField fx:id="ContactField" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <tooltip>
-                  <Tooltip text="A tulajdonos elérhetősége." />
-               </tooltip></TextField>
-            <TextField fx:id="PlateField" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <tooltip>
-                  <Tooltip text="Jármű rendszáma." />
-               </tooltip></TextField>
-            <TextField fx:id="ManufacturerField" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <tooltip>
-                  <Tooltip text="Jármű gyártója." />
-               </tooltip></TextField>
-            <TextField fx:id="TypeField" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <tooltip>
-                  <Tooltip text="Jármű típusa." />
-               </tooltip></TextField>
-            <TextField fx:id="FaultField" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <tooltip>
-                  <Tooltip text="Hiba/Hibák leírása röviden." />
-               </tooltip></TextField>
+            <TextField fx:id="OwnerField" GridPane.columnIndex="1" />
+            <TextField fx:id="ContactField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="PlateField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="ManufacturerField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="TypeField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="FaultField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <Button fx:id="AddingCarButton" layoutX="49.0" layoutY="301.0" mnemonicParsing="false" onAction="#AddingCartoDBHandle" style="-fx-background-color: #E58925;" text="Hozzáadás +" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0">
@@ -93,10 +112,13 @@
          <tooltip>
             <Tooltip text="Vissza a főablakba" />
          </tooltip></Button>
-      <Label layoutX="189.0" layoutY="35.0" text="Jármű hozzáadása" textFill="WHITE">
+      <Label layoutX="189.0" layoutY="35.0" text="Jármű hozzáadása" textFill="WHITE" underline="true">
          <font>
             <Font size="30.0" />
          </font>
+         <effect>
+            <Bloom />
+         </effect>
       </Label>
       <ImageView fitHeight="158.0" fitWidth="153.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <image>

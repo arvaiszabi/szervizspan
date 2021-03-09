@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e7e6f0, #cecfe1, #b3b8d2, #97a2c4, #8697c5, #758cc6, #6181c7, #597cd6, #5576e4, #576ff0, #5f66fb);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DBSearchController">
+<AnchorPane fx:id="WindowsBase" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e7e6f0, #cecfe1, #b3b8d2, #97a2c4, #8697c5, #758cc6, #6181c7, #597cd6, #5576e4, #576ff0, #5f66fb);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DBSearchController">
    <children>
       <TableView fx:id="SearchTableView" layoutX="27.0" layoutY="177.0" prefHeight="545.0" prefWidth="745.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         <columns>
@@ -52,6 +53,9 @@
                <font>
                   <Font size="15.0" />
                </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
             <TextField fx:id="SearchField" GridPane.columnIndex="1" />
             <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#SearchButtonHandle" style="-fx-background-color: #E58925;" text="Keresés" textFill="WHITE" GridPane.columnIndex="2">
@@ -60,10 +64,13 @@
                </effect></Button>
          </children>
       </GridPane>
-      <Label layoutX="341.0" layoutY="28.0" text="Keresés" textFill="WHITE" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="30.0">
+      <Label layoutX="341.0" layoutY="28.0" text="Keresés" textFill="WHITE" underline="true" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="30.0">
          <font>
             <Font size="30.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <Bloom />
+         </effect></Label>
       <Button fx:id="DataOpen" layoutX="20.0" layoutY="738.0" mnemonicParsing="false" onAction="#DataOpenButtonHandle" style="-fx-background-color: #E58925;" text="Adatlap megnyitása" textFill="WHITE" AnchorPane.leftAnchor="20.0">
          <effect>
             <Reflection />

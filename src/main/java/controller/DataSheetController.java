@@ -3,10 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.DBaseManager;
 import model.DataContainer;
@@ -24,22 +21,33 @@ public class DataSheetController implements Initializable {
     @FXML TextField ManuField = new TextField();
     @FXML TextField TypeField = new TextField();
     @FXML TextField FaultField = new TextField();
+    @FXML RadioButton ReadyRadio = new RadioButton();
+    @FXML RadioButton InProgressRadio = new RadioButton();
+    final ToggleGroup ProgressSelection = new ToggleGroup();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DataContainer pack = DataContainer.getINSTANCE();
+        ReadyRadio.setToggleGroup(ProgressSelection);
+        InProgressRadio.setToggleGroup(ProgressSelection);
         OwnerField.setText(pack.getGepjarmu().getNev());
         ContactField.setText(pack.getGepjarmu().getKontakt());
         ManuField.setText(pack.getGepjarmu().getGyarto());
         TypeField.setText(pack.getGepjarmu().getTipus());
         FaultField.setText(pack.getGepjarmu().getHiba());
         PlateLabel.setText(pack.getGepjarmu().getRendszam());
+        if (pack.getGepjarmu().getKesz().equals("Elkészült!"))
+            ReadyRadio.setSelected(true);
+        else
+            InProgressRadio.setSelected(true);
         ModifyButton.setDisable(true);
         OwnerField.setDisable(true);
         ContactField.setDisable(true);
         ManuField.setDisable(true);
         TypeField.setDisable(true);
         FaultField.setDisable(true);
+        ReadyRadio.setDisable(true);
+        InProgressRadio.setDisable(true);
     }
     @FXML
     public void ModifyButtonHandle(ActionEvent actionEvent) {
@@ -48,7 +56,8 @@ public class DataSheetController implements Initializable {
                                          ManuField.getText(),
                                          TypeField.getText(),
                                          PlateLabel.getText(),
-                                         FaultField.getText());
+                                         FaultField.getText(),
+                                         ReadyRadio.isSelected()?true:false);
         DBaseManager.CarDBUpdate(modjarmu);
         Alert Alarm = new Alert(Alert.AlertType.INFORMATION);
         Alarm.setHeaderText("Módosítás");
@@ -68,5 +77,7 @@ public class DataSheetController implements Initializable {
         ManuField.setDisable(false);
         TypeField.setDisable(false);
         FaultField.setDisable(false);
+        ReadyRadio.setDisable(false);
+        InProgressRadio.setDisable(false);
     }
 }

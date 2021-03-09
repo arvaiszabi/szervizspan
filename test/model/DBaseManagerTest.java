@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class DBaseManagerTest {
 
-   private static Gepjarmu testcar = new Gepjarmu("Gipsz Jakab", "+0020000000", "TEST", "CAR", "ABC-123", "Nem jó!");
+   private static Gepjarmu testcar = new Gepjarmu("Gipsz Jakab", "+0020000000", "TEST", "CAR", "ABC-123", "Nem jó!", false);
 
     @Test
     @Order(1)
@@ -27,7 +27,7 @@ class DBaseManagerTest {
     @Order(3)
     @Test
     void carDBUpdate() {
-        Gepjarmu mod_car = new Gepjarmu("Gipsz Jakab", "+0020000000", "MOD_TEST", "CAR", "ABC-123", "Nem jó!");
+        Gepjarmu mod_car = new Gepjarmu("Gipsz Jakab", "+0020000000", "MOD_TEST", "CAR", "ABC-123", "Nem jó!", false);
         assertDoesNotThrow(() -> DBaseManager.CarDBUpdate(mod_car));
         ArrayList<Gepjarmu> TestList = DBaseManager.DBaseSearch("MOD_TEST");
         Assertions.assertFalse(TestList.isEmpty());
