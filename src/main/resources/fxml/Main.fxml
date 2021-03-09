@@ -14,7 +14,7 @@
             <Image url="@../main_car.png" />
          </image>
       </ImageView>
-      <MenuBar style="-fx-background-color: transparent;">
+      <MenuBar fx:id="Menu" style="-fx-background-color: transparent;">
         <menus>
           <Menu mnemonicParsing="false" text="Fájl">
             <items>

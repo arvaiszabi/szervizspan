@@ -14,7 +14,7 @@
             <Image url="@../main_car.png" />
          </image>
       </ImageView>
-      <MenuBar style="-fx-background-color: transparent;">
+      <MenuBar fx:id="Menu" style="-fx-background-color: transparent;">
         <menus>
           <Menu mnemonicParsing="false" text="Fájl">
             <items>
@@ -24,7 +24,7 @@
           <Menu mnemonicParsing="false" text="Jármű">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#AddingCartoDBHandle" text="Új jármű hozzáadása..." />
-                  <MenuItem mnemonicParsing="false" onAction="#SearchCarDBHandle" text="Keresés" />
+                  <MenuItem mnemonicParsing="false" onAction="#SearchCarDBHandle" text="Adatbázis" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Segítség">
