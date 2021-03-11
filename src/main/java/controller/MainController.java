@@ -23,7 +23,7 @@ public class MainController implements Initializable {
     }
     @FXML
     public void ExitHandle(ActionEvent actionEvent) {
-        Platform.exit();
+        //Platform.exit();
         System.exit(0);
     }
     @FXML

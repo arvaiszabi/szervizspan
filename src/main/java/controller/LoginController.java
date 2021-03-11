@@ -24,7 +24,7 @@ public class LoginController implements Initializable {
     @FXML private Button LoginButton = new Button();
 
     @FXML
-    private void AuthorizationHandle(ActionEvent event) throws IOException {
+    protected void AuthorizationHandle(ActionEvent event) throws IOException {
         Person LogForm = new Person(UserNameField.getText(), PasswordField.getText());
         TextClear();
         if(LogForm.getUsername().equals("admin") && LogForm.getPassword().equals("admin"))
