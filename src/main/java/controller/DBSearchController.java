@@ -13,10 +13,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -41,6 +43,7 @@ public class DBSearchController implements Initializable {
     @FXML private TableColumn<Gepjarmu, String> PlateCol;
     @FXML private TableColumn<Gepjarmu, String> FaultCol;
     @FXML private TableColumn<Gepjarmu, String> StatCol;
+    @FXML private ScrollPane Scroller = new ScrollPane();
 
     private Alert Alarm = new Alert(Alert.AlertType.INFORMATION);
 
@@ -96,8 +99,14 @@ public class DBSearchController implements Initializable {
     }
     @FXML
     public void AllfromDBHandle(ActionEvent actionEvent) {
+        SearchTableView.getItems().clear();
         ArrayList<Gepjarmu> Result = DBaseManager.DBaseSearch("LISTALL");
         ObservableList<Gepjarmu> Eredmeny = FXCollections.observableArrayList(Result);
+        if(Eredmeny.isEmpty()){
+            Alarm.setContentText("Az adatbázis jelenleg üres!");
+            Alarm.show();
+        }
+        else
         SearchTableView.setItems(Eredmeny);
     }
     @FXML
