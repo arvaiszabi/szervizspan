@@ -1,7 +1,6 @@
 package controller;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 
 import javafx.scene.control.Button;
@@ -12,8 +11,7 @@ import javafx.stage.StageStyle;
 import model.DBaseManager;
 import model.DataContainer;
 import model.Gepjarmu;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
@@ -23,21 +21,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import java.util.function.BooleanSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(ApplicationExtension.class)
 class DataSheetControllerTest {
 
-    private static Gepjarmu testcar = new Gepjarmu("Gipsz Jakab", "+0020000000", "TEST3", "CAR", "AAA-123", "Nem jó!", false);
+    private static Gepjarmu testcar = new Gepjarmu("Gipsz Jakab", "+0020000000", "TEST", "CAR", "AAA-123", "Nem jó!", false);
 
     @Start
     public void Start (Stage stage) throws IOException {
-        DBaseManager.DBaseCarAdd(testcar);
-        DataContainer pack = DataContainer.getINSTANCE();
-        pack.setGepjarmu(DBaseManager.DBaseSearch("TEST3").get(0));
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/DataSheet.fxml"));
         Stage datasheet = new Stage();
         datasheet.initStyle(StageStyle.UNDECORATED);
@@ -48,29 +42,15 @@ class DataSheetControllerTest {
         datasheet.show();
     }
 
-    @Test
-    void modifyButtonHandle(FxRobot TestRobot) {
-        Button UnlockTest = TestRobot.lookup("#UnlockButton").query();
-        assertNotNull(UnlockTest);
-        TestRobot.clickOn(UnlockTest);
-        Button ModifyTest = TestRobot.lookup("#ModifyButton").query();
-        assertNotNull(ModifyTest);
-        TextField ManuTest = TestRobot.lookup("#ManuField").query();
-        TestRobot.clickOn(ManuTest).write("+TEST");
-        TestRobot.clickOn(ModifyTest);
-        assertFalse(DBaseManager.DBaseSearch("TEST3+TEST").isEmpty());
-        DeleteTestRecord();
+    @BeforeAll
+    private static void AddTestCarToDB() {
+        DBaseManager.DBaseCarAdd(testcar);
+        DataContainer pack = DataContainer.getINSTANCE();
+        pack.setGepjarmu(DBaseManager.DBaseSearch("TEST").get(0));
     }
 
     @Test
-    void backButtonHandleShouldCloseWindowOnCLick(FxRobot TestRobot) throws Exception {
-        Button ExitButton = TestRobot.lookup("#BackButton").query();
-        assertNotNull(ExitButton);
-        TestRobot.clickOn(ExitButton);
-        DeleteTestRecord();
-    }
-
-    @Test
+    @Order(1)
     void unlockButtonHandle(FxRobot TestRobot) {
         TextField OwnerTest = TestRobot.lookup("#OwnerField").query();
         assertNotNull(OwnerTest);
@@ -89,10 +69,33 @@ class DataSheetControllerTest {
         RadioButton ReadyTest = TestRobot.lookup("#ReadyRadio").query();
         assertNotNull(ReadyTest);
         TestRobot.clickOn(UnlockTest);
-        DeleteTestRecord();
     }
 
-    private static void DeleteTestRecord(){
+    @Test
+    @Order(2)
+    void backButtonHandleShouldCloseWindowOnCLick(FxRobot TestRobot) {
+        Button ExitButton = TestRobot.lookup("#BackButton").query();
+        assertNotNull(ExitButton);
+        TestRobot.clickOn(ExitButton);
+    }
+
+    @Test
+    @Order(3)
+    void modifyButtonHandle(FxRobot TestRobot) {
+        Button UnlockTest = TestRobot.lookup("#UnlockButton").query();
+        assertNotNull(UnlockTest);
+        TestRobot.clickOn(UnlockTest);
+        Button ModifyTest = TestRobot.lookup("#ModifyButton").query();
+        assertNotNull(ModifyTest);
+        TextField ManuTest = TestRobot.lookup("#ManuField").query();
+        TestRobot.clickOn(ManuTest).write("+TEST");
+        TestRobot.clickOn(ModifyTest);
+        assertFalse(DBaseManager.DBaseSearch("TEST+TEST").isEmpty());
+    }
+
+
+    @AfterAll
+    static void DeleteTest(){
         DBaseManager.DBaseDelete(testcar.getRendszam());
     }
 }

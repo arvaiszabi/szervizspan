@@ -14,6 +14,7 @@ import model.DBaseManager;
 import model.DataContainer;
 import model.Gepjarmu;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
 class AddCarDBControllerTest {
 
-    private static Gepjarmu testcar = new Gepjarmu("Gipsz Jakab", "+0020000000", "TEST2", "CAR", "AAA-123", "Nem jó!", false);
+    private static Gepjarmu testcar = new Gepjarmu("Gipsz Jakab", "+0020000000", "TEST2", "CAR", "ABA-123", "Nem jó!", false);
 
     @Start
     public void start(Stage stage) throws IOException {
@@ -49,13 +50,13 @@ class AddCarDBControllerTest {
         caradd.setScene(scene);
         caradd.show();
     }
-
+        @Order(2)
         @ParameterizedTest
         @ValueSource(strings = {"ABC123", "ABC 123", "a1b-234", "abc-1a3", "ABC", "ABC0123"})
         void plateFormatCheckShouldReturnFalseForStrings (String string){
             assertFalse(AddCarDBController.PlateFormatCheck(string), "Rendszám: " + string);
         }
-
+       @Order(1)
         @Test
         void addingCartoDBHandle (FxRobot TestRobot) {
             assertTrue(DBaseManager.DBaseSearch("TEST2").isEmpty());
@@ -83,12 +84,11 @@ class AddCarDBControllerTest {
             assertFalse(DBaseManager.DBaseSearch(testcar.getRendszam()).isEmpty());
             DBaseManager.DBaseDelete(testcar.getRendszam());
         }
-
+        @Order(3)
         @Test
         void backButtonHandle (FxRobot TestRobot) {
         Button ExitButton = TestRobot.lookup("#BackButton").query();
         assertNotNull(ExitButton);
-        TestRobot.clickOn(ExitButton);
         }
 
     }
