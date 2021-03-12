@@ -115,6 +115,9 @@ public class DBSearchController implements Initializable {
         DBaseManager.DBaseDelete(selected.getRendszam());
         Alarm.setContentText("Adatlap sikeresen törölve!");
         Alarm.show();
-        SearchButtonHandle(new ActionEvent());
+        if(!SearchField.getText().equals(""))
+            SearchButtonHandle(new ActionEvent());
+        else
+            AllfromDBHandle(new ActionEvent());
     }
 }

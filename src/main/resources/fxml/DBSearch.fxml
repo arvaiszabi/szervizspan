@@ -21,7 +21,7 @@
    <children>
       <ScrollPane fx:id="Scroller" hbarPolicy="ALWAYS" layoutX="20.0" layoutY="196.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <content>
-            <TableView fx:id="SearchTableView" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="1028.0">
+            <TableView fx:id="SearchTableView" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="1100.0">
               <columns>
                 <TableColumn fx:id="OwnerCol" prefWidth="75.0" text="Tulajdonos" />
                 <TableColumn fx:id="ContactCol" prefWidth="75.0" text="Elérhetőség" />
