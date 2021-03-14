@@ -14,7 +14,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Person;
 
 public class LoginController implements Initializable {
@@ -64,5 +66,16 @@ public class LoginController implements Initializable {
     {
         UserNameField.clear();
         PasswordField.clear();
+    }
+
+    public void AddNewAccount(ActionEvent actionEvent) throws Exception{
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/AddAccount.fxml"));
+            Stage accadd = new Stage();
+            accadd.initStyle(StageStyle.UNDECORATED);
+            accadd.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("/styles/Styles.css");
+            accadd.setScene(scene);
+            accadd.show();
     }
 }

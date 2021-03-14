@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="650.0" style="-fx-background-color: linear-gradient(to right top, #4a41a6, #444aa5, #4152a2, #41599f, #455f9a, #376ea8, #247eb5, #008dbe, #00abd0, #00c9cf, #00e4bc, #5ffb9c);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddAccountController">
+   <children>
+      <Label layoutX="215.0" layoutY="31.0" text="Regisztráció" textFill="WHITE" underline="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <ImageView fitHeight="124.0" fitWidth="142.0" layoutX="14.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../new_user.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="NotifiLabel" layoutX="58.0" layoutY="94.0" text="Figyelem! Új felhasználó csak &quot;supervisor&quot; jelszó segítségével adható hozzá!" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label layoutX="58.0" layoutY="119.0" text="Ezt a jelszót kérje a szerviz vezetőjétől!" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Button fx:id="AddAccount" layoutX="567.0" layoutY="393.0" mnemonicParsing="false" onAction="#AddingAccountHandle" style="-fx-background-color: #E58925;" text="Regisztráció" textFill="WHITE" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="85.0">
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
+      <GridPane layoutX="12.0" layoutY="160.0" prefHeight="210.0" prefWidth="601.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="UserName" GridPane.columnIndex="1" />
+            <TextField fx:id="PassWord" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Felhasználónév:" textFill="WHITE" GridPane.halignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Jelszó mégegyszer:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Jelszó:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Bloom />
+                     </effect>
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <CheckBox fx:id="ShowPass" mnemonicParsing="false" text="Mutasd a jelszót!" textFill="#9a9090">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </CheckBox>
+               </children>
+            </GridPane>
+            <Label text="Supervisor jelszó:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <PasswordField fx:id="MaskedPassWord" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="PassWordTwice" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="SuperVisor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
