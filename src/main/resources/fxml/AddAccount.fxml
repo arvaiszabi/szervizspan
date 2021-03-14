@@ -77,7 +77,7 @@
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Jelszó mégegyszer:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label fx:id="PassRequestRep" text="Jelszó mégegyszer:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
@@ -108,13 +108,10 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <CheckBox fx:id="ShowPass" mnemonicParsing="false" text="Mutasd a jelszót!" textFill="#9a9090">
+                  <CheckBox fx:id="ShowPass" mnemonicParsing="false" text="Mutasd a jelszót!" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
-                     <effect>
-                        <Bloom />
-                     </effect>
                   </CheckBox>
                </children>
             </GridPane>
@@ -134,5 +131,10 @@
             <PasswordField fx:id="SuperVisor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <Button fx:id="BackButton" layoutX="166.0" layoutY="388.0" mnemonicParsing="false" onAction="#CloseReg" style="-fx-background-color: #E58925;" text="Vissza" textFill="WHITE">
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

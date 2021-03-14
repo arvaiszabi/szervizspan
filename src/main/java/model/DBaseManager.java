@@ -151,4 +151,61 @@ public class DBaseManager {
             }
         }
     }
+    public static String UserSearch(String user)
+    {
+        Person User = new Person("","");
+        Connection connection = DBaseAccess();
+        PreparedStatement select = null;
+        ResultSet Talalat = null;
+        String sql_str = "SELECT * FROM Felhasználó WHERE ? IN (UserName)";
+        try
+        {
+            select = connection.prepareStatement(sql_str);
+            select.setString(1, user);
+            Talalat = select.executeQuery();
+            //if(Talalat.next() != false)
+                User = new Person(Talalat.getString("UserName"), Talalat.getString("PassWord"));
+    } catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        finally {
+            try {
+                Talalat.close();
+                select.close();
+                connection.close();
+            }catch (SQLException | NullPointerException e)
+            {
+                System.err.println(e.getMessage());
+            }
+        }
+        return User.getPassword();
+    }
+    public static void NewAccountAdd (Person person)
+    {
+        Connection connection = DBaseAccess();
+        PreparedStatement insert = null;
+        String sql_str = "INSERT INTO Felhasználó (UserName, PassWord) VALUES(?,?)";
+        try
+        {
+            insert = connection.prepareStatement(sql_str);
+            insert.setString(1, person.getUsername());
+            insert.setString(2, person.getPassword());
+            insert.execute();
+        } catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        finally // Finally ágak az adatbázis bezárása miatt kellenek!
+        {
+            try
+            {
+                insert.close();
+                connection.close();
+            } catch (SQLException | NullPointerException e)
+            {
+                System.err.println(e.getMessage());
+            }
+        }
+    }
 }

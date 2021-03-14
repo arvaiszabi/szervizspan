@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import model.DBaseManager;
 import model.Person;
 
 import java.net.URL;
@@ -19,6 +21,10 @@ public class AddAccountController implements Initializable {
 
     @FXML
     private Button AddAccount = new Button();
+    @FXML
+    private Button BackButton = new Button();
+    @FXML
+    private Label PassRequestRep = new Label();
     @FXML
     private TextField UserName = new TextField();
     @FXML
@@ -44,19 +50,60 @@ public class AddAccountController implements Initializable {
         MaskedPassWord.visibleProperty().bind(ShowPass.selectedProperty().not());
         PassWord.textProperty().bindBidirectional(MaskedPassWord.textProperty());
         PassWordTwice.visibleProperty().bind(ShowPass.selectedProperty().not());
+        PassRequestRep.visibleProperty().bind(ShowPass.selectedProperty().not());
+        PassWordTwice.disableProperty().bind(MaskedPassWord.textProperty().isEmpty());
     }
 
     public void AddingAccountHandle(ActionEvent actionEvent) {
-        String SuperPass = new String();//adatbázisból kell majd kivenni
-        ArrayList<Person> IsFree = new ArrayList<>(); // Szabad-e a felhasználó név?
-        if(ShowPass.isSelected() && IsFree.isEmpty() && SuperPass.equals(SuperVisor.getText())){
-            Person NewAccount = new Person(UserName.getText(), PassWord.getText());
-            //továbbítás az adatbázisba még meg kell írni!
-            alarm.setAlertType(Alert.AlertType.INFORMATION);
-            alarm.setHeaderText("Információ");
-            alarm.setContentText("Sikeres regisztráció!");
+        if(DBaseManager.UserSearch(UserName.getText()).equals("") &&
+                DBaseManager.UserSearch("Supervisor").equals(SuperVisor.getText()) &&
+                !UserName.getText().equals(""))
+        {
+            if(!ShowPass.isSelected() && MaskedPassWord.getText().equals(PassWordTwice.getText()) && !MaskedPassWord.getText().equals(""))
+                AccountAdd();
+            else if (ShowPass.isSelected() && !PassWord.getText().equals(""))
+                AccountAdd();
         }
-        else if(!ShowPass.isSelected());
+        else
+            Fault();
+        }
 
+    public void CloseReg(ActionEvent actionEvent) {
+        Stage Registration = (Stage) BackButton.getScene().getWindow();
+        Registration.close();
+    }
+
+    private void TextClear(){
+        UserName.clear();
+        PassWord.clear();
+        PassWordTwice.clear();
+        SuperVisor.clear();
+        MaskedPassWord.clear();
+    }
+
+    private void AccountAdd(){
+        Person NewAccount = new Person(UserName.getText(), PassWord.getText());
+        DBaseManager.NewAccountAdd(NewAccount);
+        alarm.setAlertType(Alert.AlertType.INFORMATION);
+        alarm.setHeaderText("Információ");
+        alarm.setContentText("Sikeres regisztráció! Most már bejelentkezhet!");
+        alarm.show();
+        TextClear();
+    }
+
+    private void Fault(){
+        alarm.setAlertType(Alert.AlertType.ERROR);
+        alarm.setHeaderText("Hiba!");
+        if(UserName.getText().equals(""))
+            alarm.setContentText("Adjon meg egy felhasználónevet!");
+        else if((!ShowPass.isSelected() && MaskedPassWord.getText().equals("")) || (ShowPass.isSelected() && PassWord.getText().equals("")))
+            alarm.setContentText("Írjon be egy jelszót!");
+        else if(!ShowPass.isSelected() && !MaskedPassWord.getText().equals(PassWordTwice.getText()))
+            alarm.setContentText("A beírt jelszavak nem egyeznek!");
+        else if(!UserName.getText().equals(""))
+            alarm.setContentText("Már létezik felhasználó ezzel a névvel!");
+        else
+            alarm.setContentText("Hibás Supervisor jelszó!");
+        alarm.show();
     }
 }

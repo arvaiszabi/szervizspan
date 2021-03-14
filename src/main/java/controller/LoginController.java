@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.DBaseManager;
 import model.Person;
 
 public class LoginController implements Initializable {
@@ -28,21 +29,21 @@ public class LoginController implements Initializable {
     @FXML
     protected void AuthorizationHandle(ActionEvent event) throws IOException {
         Person LogForm = new Person(UserNameField.getText(), PasswordField.getText());
-        TextClear();
-        if(LogForm.getUsername().equals("admin") && LogForm.getPassword().equals("admin"))
+        if(DBaseManager.UserSearch(LogForm.getUsername()).equals(LogForm.getPassword()) && !LogForm.getPassword().equals(""))
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Információ!");
             alert.setHeaderText("Siker!");
             alert.setContentText("Sikeres bejelentkezés!");
-            alert.showAndWait();Stage login = (Stage) LoginButton.getScene().getWindow();
+            alert.showAndWait();
+            Stage login = (Stage) LoginButton.getScene().getWindow();
             login.close();
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
             Stage mainFrame = new Stage();
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/Styles.css");
 
-            mainFrame.setTitle("SzervizSPAN   build:20210225");
+            mainFrame.setTitle("SzervizSPAN   build:20210314");
             mainFrame.setScene(scene);
             mainFrame.show();
         }
