@@ -55,18 +55,9 @@ public class AddAccountController implements Initializable {
     }
 
     public void AddingAccountHandle(ActionEvent actionEvent) {
-        if(DBaseManager.UserSearch(UserName.getText()).equals("") &&
-                DBaseManager.UserSearch("Supervisor").equals(SuperVisor.getText()) &&
-                !UserName.getText().equals(""))
-        {
-            if(!ShowPass.isSelected() && MaskedPassWord.getText().equals(PassWordTwice.getText()) && !MaskedPassWord.getText().equals(""))
-                AccountAdd();
-            else if (ShowPass.isSelected() && !PassWord.getText().equals(""))
-                AccountAdd();
-        }
-        else
-            Fault();
-        }
+        if(Fault())
+            AccountAdd();
+    }
 
     public void CloseReg(ActionEvent actionEvent) {
         Stage Registration = (Stage) BackButton.getScene().getWindow();
@@ -91,19 +82,27 @@ public class AddAccountController implements Initializable {
         TextClear();
     }
 
-    private void Fault(){
+    private boolean Fault(){
+        alarm.setContentText("");
         alarm.setAlertType(Alert.AlertType.ERROR);
         alarm.setHeaderText("Hiba!");
-        if(UserName.getText().equals(""))
+        if(!DBaseManager.UserSearch("Supervisor").equals(SuperVisor.getText()))
+            alarm.setContentText("Hibás Supervisor jelszó!");
+        else if(UserName.getText().equals(""))
             alarm.setContentText("Adjon meg egy felhasználónevet!");
+        else if(!DBaseManager.UserSearch(UserName.getText()).equals(""))
+            alarm.setContentText("Már létezik felhasználó ezzel a névvel!");
         else if((!ShowPass.isSelected() && MaskedPassWord.getText().equals("")) || (ShowPass.isSelected() && PassWord.getText().equals("")))
             alarm.setContentText("Írjon be egy jelszót!");
         else if(!ShowPass.isSelected() && !MaskedPassWord.getText().equals(PassWordTwice.getText()))
             alarm.setContentText("A beírt jelszavak nem egyeznek!");
-        else if(!UserName.getText().equals(""))
-            alarm.setContentText("Már létezik felhasználó ezzel a névvel!");
+        if(!alarm.getContentText().equals(""))
+        {
+            alarm.show();
+            return false;
+        }
         else
-            alarm.setContentText("Hibás Supervisor jelszó!");
-        alarm.show();
+            return true;
     }
+
 }

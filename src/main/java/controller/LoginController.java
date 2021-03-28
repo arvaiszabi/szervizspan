@@ -42,8 +42,7 @@ public class LoginController implements Initializable {
             Stage mainFrame = new Stage();
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/Styles.css");
-
-            mainFrame.setTitle("SzervizSPAN   build:20210314");
+            mainFrame.setTitle("SzervizSPAN   build:20210328");
             mainFrame.setScene(scene);
             mainFrame.show();
         }

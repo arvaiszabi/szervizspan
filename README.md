@@ -5,8 +5,14 @@ vagy akár a teljes adatbázis listázható!
 
 Javítások:
 
-2021.03.09:
+2021.03.09.:
 - A keresőmező eredménylistája automatikusan frissül egy adatlap törlésekor.
 - Üres keresőmezővel nem lehet keresni.
 - A jármű státuszának váltásakor a program is helyesen jelzi azt vissza.
 Korábban az adatbázisban hiába volt meg a módosítás, a program ezt nem vette figyelembe.
+  
+2021.03.14.:
+- Új funkció: lehetőség van új felhasználó felvételére a program használatához.
+
+2021.03.28.:
+- Javítások a regisztrációs űrlapon

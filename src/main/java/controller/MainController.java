@@ -23,7 +23,6 @@ public class MainController implements Initializable {
     }
     @FXML
     public void ExitHandle(ActionEvent actionEvent) {
-        //Platform.exit();
         System.exit(0);
     }
     @FXML
@@ -34,8 +33,6 @@ public class MainController implements Initializable {
         caradd.initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-
-        //caradd.setTitle("Új jármű hozzáadása...");
         caradd.setScene(scene);
         caradd.show();
     }
@@ -47,7 +44,6 @@ public class MainController implements Initializable {
         cardshow.initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-
         cardshow.setTitle("Névjegy");
         cardshow.setScene(scene);
         cardshow.show();
@@ -60,8 +56,6 @@ public class MainController implements Initializable {
         searchtable.initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-
-        //searchtable.setTitle("Keresés az adatbázisban");
         searchtable.setScene(scene);
         searchtable.show();
     }
