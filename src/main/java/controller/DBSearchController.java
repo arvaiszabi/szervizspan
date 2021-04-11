@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -63,6 +64,10 @@ public class DBSearchController implements Initializable {
         Alarm.setHeaderText("Információ");
         DataOpen.disableProperty().bind(Bindings.isEmpty(SearchTableView.getSelectionModel().getSelectedItems()));
         DeleteButton.disableProperty().bind(Bindings.isEmpty(SearchTableView.getSelectionModel().getSelectedItems()));
+        Alarm.setResizable(true);
+        Alarm.onShownProperty().addListener(e -> {
+            Platform.runLater(() -> Alarm.setResizable(false));
+        });
     }
     @FXML
     public void BackButtonHandle(ActionEvent actionEvent) {

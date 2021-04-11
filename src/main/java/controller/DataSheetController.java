@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +26,7 @@ public class DataSheetController implements Initializable {
     @FXML RadioButton ReadyRadio = new RadioButton();
     @FXML RadioButton InProgressRadio = new RadioButton();
     final ToggleGroup ProgressSelection = new ToggleGroup();
+    Alert alarm = new Alert(Alert.AlertType.INFORMATION);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,12 +60,15 @@ public class DataSheetController implements Initializable {
                                          TypeField.getText(),
                                          PlateLabel.getText(),
                                          FaultField.getText(),
-                                         ReadyRadio.isSelected()?true:false);
+                                         ReadyRadio.isSelected());
         DBaseManager.CarDBUpdate(modjarmu);
-        Alert Alarm = new Alert(Alert.AlertType.INFORMATION);
-        Alarm.setHeaderText("Módosítás");
-        Alarm.setContentText("Adatlap sikeresen módosítva!");
-        Alarm.show();
+        alarm.setResizable(true);
+        alarm.onShownProperty().addListener(e -> {
+            Platform.runLater(() -> alarm.setResizable(false));
+        });
+        alarm.setHeaderText("Módosítás");
+        alarm.setContentText("Adatlap sikeresen módosítva!");
+        alarm.show();
     }
     @FXML
     public void BackButtonHandle(ActionEvent actionEvent) {

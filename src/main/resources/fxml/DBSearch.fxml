@@ -19,7 +19,7 @@
 
 <AnchorPane fx:id="WindowsBase" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right top, #ffffff, #e7e6f0, #cecfe1, #b3b8d2, #97a2c4, #8697c5, #758cc6, #6181c7, #597cd6, #5576e4, #576ff0, #5f66fb);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DBSearchController">
    <children>
-      <ScrollPane fx:id="Scroller" hbarPolicy="ALWAYS" layoutX="20.0" layoutY="196.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+      <ScrollPane fx:id="Scroller" hbarPolicy="ALWAYS" layoutX="20.0" layoutY="196.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <content>
             <TableView fx:id="SearchTableView" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="1100.0">
               <columns>

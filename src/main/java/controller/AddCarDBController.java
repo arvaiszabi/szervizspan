@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -78,6 +79,10 @@ public class AddCarDBController implements Initializable {
         TypeField.setPromptText("A jármű típusa");
         PlateField.setPromptText("A jármű rendszáma (pl.: ABC-123)");
         FaultField.setPromptText("Hiba leírása...");
+        Alarm.setResizable(true);
+        Alarm.onShownProperty().addListener(e -> {
+            Platform.runLater(() -> Alarm.setResizable(false));
+        });
     }
 
     protected static boolean PlateFormatCheck(String Rendszam)

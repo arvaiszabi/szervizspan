@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +53,10 @@ public class AddAccountController implements Initializable {
         PassWordTwice.visibleProperty().bind(ShowPass.selectedProperty().not());
         PassRequestRep.visibleProperty().bind(ShowPass.selectedProperty().not());
         PassWordTwice.disableProperty().bind(MaskedPassWord.textProperty().isEmpty());
+        alarm.setResizable(true);
+        alarm.onShownProperty().addListener(e -> {
+            Platform.runLater(() -> alarm.setResizable(false));
+        });
     }
 
     public void AddingAccountHandle(ActionEvent actionEvent) {
