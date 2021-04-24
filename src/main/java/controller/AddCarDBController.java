@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 public class AddCarDBController implements Initializable {
 
     @FXML private Button BackButton = new Button();
-    @FXML private Button AddingCarButton = new Button();
 
     @FXML private TextField OwnerField = new TextField();
     @FXML private TextField ContactField = new TextField();
@@ -59,9 +58,14 @@ public class AddCarDBController implements Initializable {
             Alarm.show();
             TextClear();
         }
+        else if(!SamePlates.isEmpty())
+        {
+            Alarm.setContentText("Ezzel a rendszámmal már szerepel gépjármű \naz adatbázisban!");
+            Alarm.show();
+        }
         else
         {
-            Alarm.setContentText("A rendszám formátuma nem megfelelő (helyes: ABC-123), \nvagy már szerepel az adatbázisban! ");
+            Alarm.setContentText("A rendszám formátuma nem megfelelő (helyes: ABC-123)!");
             Alarm.show();
         }
     }

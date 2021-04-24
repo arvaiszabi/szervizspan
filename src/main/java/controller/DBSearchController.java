@@ -44,7 +44,6 @@ public class DBSearchController implements Initializable {
     @FXML private TableColumn<Gepjarmu, String> PlateCol;
     @FXML private TableColumn<Gepjarmu, String> FaultCol;
     @FXML private TableColumn<Gepjarmu, String> StatCol;
-    @FXML private ScrollPane Scroller = new ScrollPane();
 
     private Alert Alarm = new Alert(Alert.AlertType.INFORMATION);
 

@@ -16,3 +16,10 @@ Korábban az adatbázisban hiába volt meg a módosítás, a program ezt nem vet
 
 2021.03.28.:
 - Javítások a regisztrációs űrlapon
+
+2021.04.10.:
+- A program dialógus ablakai néha hibásan, egész kicsiként jelentek meg. Linux KDE
+specifikus probléma.
+  
+2021.04.24.:
+- Kisebb javítások a programban.
